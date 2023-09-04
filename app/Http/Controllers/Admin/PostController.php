@@ -45,6 +45,7 @@ class PostController extends Controller
     {
         $form_data = $request->all();
 
+
         $post = new Post();
 
         $post->fill($form_data);
