@@ -35,7 +35,7 @@
                             <!-- Select -->
                             <div class="form-group mt-4">
                                 <label class="control-lable">Tipologia</label>
-                                <select name="type_id" id="type_id" class="form-control">
+                                <select name="category_id" id="category_id" class="form-control">
                                     <option value="">Seleziona tipologia</option>
                                     @foreach ($types as $type)
                                         <option value="{{ $type->id }}">{{ $type->name }}</option>

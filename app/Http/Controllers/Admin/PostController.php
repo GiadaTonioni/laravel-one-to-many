@@ -73,9 +73,13 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
-    {
-        //
-    }
+        {
+
+            $types = Type::all();
+    
+    
+            return view('admin.posts.edit', compact('types', 'post'));
+        }
 
     /**
      * Update the specified resource in storage.
@@ -85,9 +89,13 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdatePostRequest $request, Post $post)
-    {
-        //
-    }
+        {
+            $form_data = $request->all();
+    
+            $post->update($form_data);
+    
+            return redirect()->route('admin.posts.show', compact('post'));
+        }
 
     /**
      * Remove the specified resource from storage.
@@ -97,6 +105,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 }

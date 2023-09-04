@@ -31,14 +31,16 @@
                                         <i class="fas fa-eye"></i>
                                         <p>mostra</p>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-warning">
+                                    <a href="{{ Route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-warning">
                                         <i class="fas fa-edit"></i>
+                                        <p>edit</p>
                                     </a>
-                                    <form method="POST" action="#" class="d-inline-block">
+                                    <form method="POST" action="{{ Route('admin.posts.destroy', $post) }}" class="d-inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-sm btn-danger">
                                             <i class="fas fa-trash"></i>
+                                            <p>delete</p>
                                         </button>
                                     </form>
                                 </td>
