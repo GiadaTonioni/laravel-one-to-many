@@ -5,6 +5,10 @@
         <div class="row">
             <div class="col-12 mt-5">
                 <h1>I POST</h1>
+                <div class="btn-container">
+                        <a href="{{ Route('admin.posts.create') }}"><button class="btn btn-secondary">Crea
+                        progetto</button></a>
+                </div>
             </div>
             <div class=col-12 mt-5>
                 <table class="table table-striped">
@@ -23,8 +27,9 @@
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->slug}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-primary">
+                                    <a href="{{ Route('admin.posts.show', $post->id) }}" class="btn btn-sm btn-primary">
                                         <i class="fas fa-eye"></i>
+                                        <p>mostra</p>
                                     </a>
                                     <a href="#" class="btn btn-sm btn-warning">
                                         <i class="fas fa-edit"></i>
@@ -39,7 +44,7 @@
                                 </td>
 
                             </tr>
-                        @enforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>

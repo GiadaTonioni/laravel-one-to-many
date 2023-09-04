@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Type;
 
 class PostController extends Controller
 {
@@ -16,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::all();
+        $posts = Post::all();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -27,7 +28,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
+        $types = Type::all();
+
+
+        return view('admin.posts.create', compact('types'));
     }
 
     /**
@@ -38,7 +43,14 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $post = new Post();
+
+        $post->fill($form_data);
+        $post->save();
+
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
@@ -47,9 +59,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+        $posts = Post::findOrFail($id);
+
+        return view('admin.posts.show', compact('posts'));
     }
 
     /**
